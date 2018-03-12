@@ -17,7 +17,7 @@ public class CreateBusinessActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_business_activity);
         //Get the app wide shared variables
-        appState = ((MyApplicationData) getApplicationContext());
+        appState = (MyApplicationData) getApplicationContext();
 
         submitButton = (Button) findViewById(R.id.submitButton);
         nameField = (EditText) findViewById(R.id.name);

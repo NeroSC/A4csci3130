@@ -11,8 +11,9 @@ public class DetailViewActivity extends Activity {
     private EditText nameField, emailField;
     Business receivedPersonInfo;
     private MyApplicationData appState;
-    private Button deleteButton;
     private Button updateButton;
+    private Button deleteButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +21,14 @@ public class DetailViewActivity extends Activity {
         setContentView(R.layout.activity_detail_view);
         receivedPersonInfo = (Business) getIntent().getSerializableExtra("Business");
 
+        deleteButton = (Button) findViewById(R.id.deleteButton);
+        updateButton = (Button) findViewById(R.id.updateButton);
         nameField = (EditText) findViewById(R.id.name);
-        emailField = (EditText) findViewById(R.id.email);
+        emailField = (EditText) findViewById(R.id.address);
 
         if (receivedPersonInfo != null) {
             nameField.setText(receivedPersonInfo.name);
-            emailField.setText(receivedPersonInfo.email);
+            emailField.setText(receivedPersonInfo.address);
         }
     }
 
@@ -33,13 +36,13 @@ public class DetailViewActivity extends Activity {
         //TODO: Update contact functionality
         appState = ((MyApplicationData) getApplicationContext());
 
-        updateButton = (Button) findViewById(R.id.updateButton);
         String name = nameField.getText().toString();
-        String email = emailField.getText().toString();
+        String address = emailField.getText().toString();
         appState.firebaseReference.child(receivedPersonInfo.uid).child("name").setValue(name);
-        appState.firebaseReference.child(receivedPersonInfo.uid).child("email").setValue(email);
+        appState.firebaseReference.child(receivedPersonInfo.uid).child("address").setValue(address);
 
-        setContentView(R.layout.activity_main);
+        finish();
+
 
     }
 
@@ -47,11 +50,9 @@ public class DetailViewActivity extends Activity {
         //TODO: Erase contact functionality
 
         appState = ((MyApplicationData) getApplicationContext());
-
-        deleteButton = (Button) findViewById(R.id.deleteButton);
         appState.firebaseReference.child(receivedPersonInfo.uid).removeValue();
 
-        setContentView(R.layout.activity_main);
+        finish();
 
     }
 }

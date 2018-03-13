@@ -16,16 +16,19 @@ public class Business implements Serializable {
 
     public  String uid;
     public  String name;
-    public  String email;
+    public  String address;
+    public  String number;
+    public  String primary_business;
+    public  String province;
 
-    public Business() {
-        // Default constructor required for calls to DataSnapshot.getValue
-    }
 
-    public Business(String uid, String name, String email){
+    public Business(String uid, String name, String address,String number, String primary_business, String province){
         this.uid = uid;
         this.name = name;
-        this.email = email;
+        this.address = address;
+        this.number = number;
+        this.primary_business = primary_business;
+        this.province = province;
     }
 
     @Exclude
@@ -33,7 +36,10 @@ public class Business implements Serializable {
         HashMap<String, Object> result = new HashMap<>();
         result.put("uid", uid);
         result.put("name", name);
-        result.put("email", email);
+        result.put("address", address);
+        result.put("number", number);
+        result.put("primary_business", primary_business);
+        result.put("province", province);
 
         return result;
     }

@@ -47,11 +47,11 @@ public class DetailViewActivity extends Activity {
         String number=numberField.getText().toString();
         String primary_business=primary_businessField.getSelectedItem().toString();
         String province=provinceField.getSelectedItem().toString();
-        appState.firebaseReference.child(receivedPersonInfo.uid).child("name").setValue(name);
-        appState.firebaseReference.child(receivedPersonInfo.uid).child("address").setValue(address);
-        appState.firebaseReference.child(receivedPersonInfo.uid).child("number").setValue(number);
-        appState.firebaseReference.child(receivedPersonInfo.uid).child("primary_business").setValue(primary_business);
-        appState.firebaseReference.child(receivedPersonInfo.uid).child("province").setValue(province);
+
+
+        Business company = new Business(receivedPersonInfo.uid, name, address,number,primary_business,province);
+
+        appState.firebaseReference.child(receivedPersonInfo.uid).setValue(company);
 
         finish();
 

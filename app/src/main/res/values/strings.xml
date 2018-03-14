@@ -8,8 +8,11 @@
         <item>"Distributor"</item>
         <item>"Processor"</item>
         <item>"Fish Monger"</item>
+
     </string-array>
+
     <string-array name="Province">
+        <item>""</item>
         <item>"AB"</item>
         <item>"BC"</item>
         <item>"MB"</item>

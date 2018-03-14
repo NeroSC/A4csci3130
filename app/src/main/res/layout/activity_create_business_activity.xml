@@ -7,15 +7,14 @@
     tools:context="com.acme.a3csci3130.CreateBusinessActivity">
 
     <EditText
+        android:id="@+id/name"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
-        android:id="@+id/name"
-        android:hint = "Name"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="parent"
-        android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp" />
+        android:layout_marginTop="8dp"
+        android:hint="Name (2 to 50 characters)"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/address"
@@ -23,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:hint="Address"
+        android:hint="Address (50 characters max)"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
@@ -33,7 +32,7 @@
         android:layout_height="44dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="8dp"
-        android:hint="Number"
+        android:hint="Number (9 digits)"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address" />
 

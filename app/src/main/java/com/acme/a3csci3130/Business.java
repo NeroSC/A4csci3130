@@ -21,6 +21,9 @@ public class Business implements Serializable {
     public  String primary_business;
     public  String province;
 
+    public Business()
+    {}
+
 
     public Business(String uid, String name, String address,String number, String primary_business, String province){
         this.uid = uid;

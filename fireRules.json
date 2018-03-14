@@ -1,12 +1,23 @@
 {
   "rules": {
-    ".read": "true",
-    ".write": "true",
-    "business": {
-            "$contact": {
-
-                }
-            }
+    ".read": true,
+    ".write": true,
+    "business":{
+      "$business": {
+        "name": {
+          ".validate": "newData.isString()&&newData.exists() && (2<=newData.val().length && newData.val().length<= 48)"
+        },
+        "address": {
+          ".validate": "newData.isString() && newData.val().length < 50"
+        },
+        "number":{
+          ".validate":"newData.isString() && newData.val().length===9 && newData.val().matches(/[0-9]/)"
+        },
+        "primary_business":{
+          ".validate":"newData.exists()"
         }
+
+      }
+    }
   }
 }

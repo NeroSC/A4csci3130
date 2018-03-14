@@ -10,7 +10,7 @@ import android.widget.Spinner;
 
 public class CreateBusinessActivity extends Activity {
 
-    private Button submitButton;
+
     private EditText nameField, addressField,numberField;
     private Spinner primary_businessField,provinceField;
     private MyApplicationData appState;
@@ -22,7 +22,7 @@ public class CreateBusinessActivity extends Activity {
         //Get the app wide shared variables
         appState = (MyApplicationData) getApplicationContext();
 
-        submitButton = (Button) findViewById(R.id.submitButton);
+
         nameField = (EditText) findViewById(R.id.name);
         addressField = (EditText) findViewById(R.id.address);
         numberField=(EditText) findViewById(R.id.number);

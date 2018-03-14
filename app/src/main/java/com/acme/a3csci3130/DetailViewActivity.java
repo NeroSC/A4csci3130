@@ -3,16 +3,16 @@ package com.acme.a3csci3130;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 public class DetailViewActivity extends Activity {
 
-    private EditText nameField, emailField;
+    private EditText nameField, addressField,numberField;
+    private Spinner primary_businessField,provinceField;
     Business receivedPersonInfo;
     private MyApplicationData appState;
-    private Button updateButton;
-    private Button deleteButton;
+
 
 
     @Override
@@ -21,14 +21,20 @@ public class DetailViewActivity extends Activity {
         setContentView(R.layout.activity_detail_view);
         receivedPersonInfo = (Business) getIntent().getSerializableExtra("Business");
 
-        deleteButton = (Button) findViewById(R.id.deleteButton);
-        updateButton = (Button) findViewById(R.id.updateButton);
+
         nameField = (EditText) findViewById(R.id.name);
-        emailField = (EditText) findViewById(R.id.address);
+        addressField = (EditText) findViewById(R.id.address);
+        numberField=(EditText) findViewById(R.id.number);
+        primary_businessField=(Spinner) findViewById(R.id.primary_business);
+        provinceField=(Spinner) findViewById(R.id.province);
+
 
         if (receivedPersonInfo != null) {
             nameField.setText(receivedPersonInfo.name);
-            emailField.setText(receivedPersonInfo.address);
+            addressField.setText(receivedPersonInfo.address);
+            numberField.setText(receivedPersonInfo.number);
+            primary_businessField.setSelection(getIndex(primary_businessField, receivedPersonInfo.primary_business));
+            provinceField.setSelection(getIndex(provinceField, receivedPersonInfo.province));
         }
     }
 
@@ -37,9 +43,15 @@ public class DetailViewActivity extends Activity {
         appState = ((MyApplicationData) getApplicationContext());
 
         String name = nameField.getText().toString();
-        String address = emailField.getText().toString();
+        String address = addressField.getText().toString();
+        String number=numberField.getText().toString();
+        String primary_business=primary_businessField.getSelectedItem().toString();
+        String province=provinceField.getSelectedItem().toString();
         appState.firebaseReference.child(receivedPersonInfo.uid).child("name").setValue(name);
         appState.firebaseReference.child(receivedPersonInfo.uid).child("address").setValue(address);
+        appState.firebaseReference.child(receivedPersonInfo.uid).child("number").setValue(number);
+        appState.firebaseReference.child(receivedPersonInfo.uid).child("primary_business").setValue(primary_business);
+        appState.firebaseReference.child(receivedPersonInfo.uid).child("province").setValue(province);
 
         finish();
 
@@ -54,5 +66,18 @@ public class DetailViewActivity extends Activity {
 
         finish();
 
+    }
+
+    public int getIndex(Spinner spinner, String myString)
+    {
+        int index = 0;
+
+        for (int i=0;i<spinner.getCount();i++){
+            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
+                index = i;
+                break;
+            }
+        }
+        return index;
     }
 }

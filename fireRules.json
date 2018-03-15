@@ -11,7 +11,7 @@
           ".validate": "newData.isString() && newData.val().length < 50"
         },
         "number":{
-          ".validate":"newData.isString() && newData.val().length===9 && newData.val().matches(/[0-9]/)"
+          ".validate":"newData.exists() && newData.isString() && newData.val().length===9 && newData.val().matches(/[0-9]/)"
         },
         "primary_business":{
           ".validate":"newData.exists()"

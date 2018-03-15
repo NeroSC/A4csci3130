@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  * Class that defines how the data will be stored in the
- * Firebase databse. This is converted to a JSON format
+ * Firebase database. This is converted to a JSON format
  */
 
 public class Business implements Serializable {

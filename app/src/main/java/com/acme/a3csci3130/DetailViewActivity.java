@@ -38,6 +38,10 @@ public class DetailViewActivity extends Activity {
         }
     }
 
+
+    /**
+     * This function updates the business in the database.
+     */
     public void updateBusiness(View v) {
         //TODO: Update contact functionality
         appState = ((MyApplicationData) getApplicationContext());
@@ -58,6 +62,10 @@ public class DetailViewActivity extends Activity {
 
     }
 
+
+    /**
+     * This function remove the considered business from the database.
+     */
     public void eraseBusiness(View v) {
         //TODO: Erase contact functionality
 
@@ -68,6 +76,10 @@ public class DetailViewActivity extends Activity {
 
     }
 
+
+    /**
+     * This function gets the index of a Spinner for a given string.
+     */
     public int getIndex(Spinner spinner, String myString)
     {
         int index = 0;
